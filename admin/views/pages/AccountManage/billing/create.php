@@ -184,7 +184,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h5>Customer Details:</h5>
-			<p>Name: <span id="customer-name">John Doe</span></p>
+			<p>Name: <input type="text" id="customer-name-input" > <span id="customer-name"><?php echo Customer::html_select("customer_id") ?></span></p>
 			<p>Email: <span id="customer-email">johndoe@example.com</span></p>
 			<p>Phone: <span id="customer-phone">123-456-7890</span></p>
 			<p>
@@ -303,12 +303,41 @@
 		Thank you for staying with us. We hope you had a pleasant experience!
 	</p>
 
-	<!-- Final Total Section -->
 	<div class="text-center">
-		<h3>Total Due: <span id="final-total">$675.00</span></h3>
+		<h4>Total Due: <span id="final-total"><?php echo Payment::find($billing->reservation_id)->amount_due ?></span></h4>
+		<h4>Amount Paid: <span id="amount-paid"><?php echo Payment::find($billing->reservation_id)->amount_received ?></span></h4>
+		<h3>Status: <span id="status"><?php echo Payment::find($billing->reservation_id)->payment_status ?></span></h3>
 		<button class="btn btn-primary" id="edit-invoice">Edit Invoice</button>
 		<button class="btn btn-success" id="generate-invoice">
 			Generate Invoice
 		</button>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		// alert('hello');
+		$("#customer_id").on("change",function() {
+			// $(this).text($(this).find(":selected").text());
+		
+			let customer_id = $(this).val();
+			// alert (customer_id);
+			$.ajax({
+				url: "<?php echo $base_url ?>api/customer/find",
+				type: "get",
+				data: {
+					customer_id: customer_id
+				},
+				success: function(response) {
+					 console.log(response);
+					let customer = JSON.parse(response);
+					// console.log(customer);
+					$("#customer-name-input").val(customer.name);
+					$("#customer-email").val(customer.email);
+					$("#customer-phone").val(customer.phone);
+					$("#customer-address").val(customer.address);
+				}
+			});
+
+		});
+	});
+</script>

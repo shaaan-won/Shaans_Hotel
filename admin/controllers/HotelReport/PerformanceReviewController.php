@@ -25,7 +25,7 @@ public function save($data,$file){
 		$errors["review_comments"]="Invalid review_comments";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$performancereview=new PerformanceReview();
 		$performancereview->staff_id=$data["staff_id"];
@@ -61,7 +61,7 @@ public function update($data,$file){
 		$errors["review_comments"]="Invalid review_comments";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$performancereview=new PerformanceReview();
 			$performancereview->id=$data["id"];

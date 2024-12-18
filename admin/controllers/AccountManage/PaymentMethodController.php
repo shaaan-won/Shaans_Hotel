@@ -19,7 +19,7 @@ public function save($data,$file){
 		$errors["description"]="Invalid description";
 	}
 
-*/
+*/	
 		if(count($errors)==0){
 			$paymentmethod=new PaymentMethod();
 		$paymentmethod->name=$data["name"];

@@ -22,7 +22,7 @@ public function save($data,$file){
 		$errors["status"]="Invalid status";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$room=new Room();
 		$room->room_number=$data["room_number"];
@@ -55,7 +55,7 @@ public function update($data,$file){
 		$errors["status"]="Invalid status";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$room=new Room();
 			$room->id=$data["id"];

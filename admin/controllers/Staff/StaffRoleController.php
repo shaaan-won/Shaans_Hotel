@@ -16,7 +16,7 @@ public function save($data,$file){
 		$errors["role_name"]="Invalid role_name";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$staffrole=new StaffRole();
 		$staffrole->role_name=$data["role_name"];
@@ -40,7 +40,7 @@ public function update($data,$file){
 		$errors["role_name"]="Invalid role_name";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$staffrole=new StaffRole();
 			$staffrole->id=$data["id"];

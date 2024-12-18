@@ -19,7 +19,7 @@ public function save($data,$file){
 		$errors["report_data"]="Invalid report_data";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$report=new Report();
 		$report->report_type=$data["report_type"];
@@ -47,7 +47,7 @@ public function update($data,$file){
 		$errors["report_data"]="Invalid report_data";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$report=new Report();
 			$report->id=$data["id"];

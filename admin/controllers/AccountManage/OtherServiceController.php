@@ -25,7 +25,7 @@ public function save($data,$file){
 		$errors["price"]="Invalid price";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$otherservice=new OtherService();
 		$otherservice->name=$data["name"];
@@ -61,7 +61,7 @@ public function update($data,$file){
 		$errors["price"]="Invalid price";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$otherservice=new OtherService();
 			$otherservice->id=$data["id"];

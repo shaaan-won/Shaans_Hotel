@@ -132,6 +132,9 @@ class Billing extends Model implements JsonSerializable{
 		$html.="</select>";
 		return $html;
 	}
+
+
+
 	static function html_table($page = 1,$perpage = 10,$criteria="",$action=true){
 		global $db,$tx,$base_url;
 		$count_result =$db->query("select count(*) total from {$tx}billings $criteria ");
@@ -161,6 +164,7 @@ class Billing extends Model implements JsonSerializable{
 		$html.= pagination($page,$total_pages);
 		return $html;
 	}
+	
 	static function html_row_details($id){
 		global $db,$tx,$base_url;
 		$result =$db->query("select id,reservation_id,user_id,room_id,customer_id,check_in_date,check_out_date,room_price,tax,discount,other_service_id,other_service_price,cleaning_charges,service_charges,total_amount,payment_method_id,payment_date,created_at from {$tx}billings where id={$id}");
@@ -189,5 +193,38 @@ class Billing extends Model implements JsonSerializable{
 		$html.="</table>";
 		return $html;
 	}
+
+	static function html_row_details_with_booking($id, $page = 1,$perpage = 10,$criteria="",$action=true){
+		global $db,$tx,$base_url;
+		$count_result =$db->query("select count(*) total from {$tx}billings $criteria ");
+		list($total_rows)=$count_result->fetch_row();
+		$total_pages = ceil($total_rows /$perpage);
+		$top = ($page - 1)*$perpage;
+		$result=$db->query("select id,reservation_id,user_id,room_id,customer_id,check_in_date,check_out_date,room_price,tax,discount,other_service_id,other_service_price,cleaning_charges,service_charges,total_amount,payment_method_id,payment_date,created_at from {$tx}billings where reservation_id=$id limit $top,$perpage");
+		$html="<div class='table-responsive'><table class='table'>";
+			$html.="<tr><th colspan='3'>".Html::link(["class"=>"btn btn-success","route"=>"billing/create","text"=>"New Billing"])."</th></tr>";
+		if($action){
+			$html.="<tr><th>Id</th><th>Reservation Id</th><th>User Id</th><th>Room Id</th><th>Customer Id</th><th>Check In Date</th><th>Check Out Date</th><th>Room Price</th><th>Tax</th><th>Discount</th><th>Other Service Id</th><th>Other Service Price</th><th>Cleaning Charges</th><th>Service Charges</th><th>Total Amount</th><th>Payment Method Id</th><th>Payment Date</th><th>Created At</th><th>Action</th></tr>";
+		}else{
+			$html.="<tr><th>Id</th><th>Reservation Id</th><th>User Id</th><th>Room Id</th><th>Customer Id</th><th>Check In Date</th><th>Check Out Date</th><th>Room Price</th><th>Tax</th><th>Discount</th><th>Other Service Id</th><th>Other Service Price</th><th>Cleaning Charges</th><th>Service Charges</th><th>Total Amount</th><th>Payment Method Id</th><th>Payment Date</th><th>Created At</th></tr>";
+		}
+		while($billing=$result->fetch_object()){
+			$action_buttons = "";
+			if($action){
+				$action_buttons = "<td><div class='btn-group' style='display:flex;'>";
+				$action_buttons.= Event::button(["name"=>"show", "value"=>"Show", "class"=>"btn btn-info", "route"=>"billing/show/$billing->id"]);
+				$action_buttons.= Event::button(["name"=>"edit", "value"=>"Edit", "class"=>"btn btn-primary", "route"=>"billing/edit/$billing->id"]);
+				$action_buttons.= Event::button(["name"=>"delete", "value"=>"Delete", "class"=>"btn btn-danger", "route"=>"billing/confirm/$billing->id"]);
+				$action_buttons.= "</div></td>";
+			}
+			$html.="<tr><td>$billing->id</td><td>$billing->reservation_id</td><td>$billing->user_id</td><td>$billing->room_id</td><td>$billing->customer_id</td><td>$billing->check_in_date</td><td>$billing->check_out_date</td><td>$billing->room_price</td><td>$billing->tax</td><td>$billing->discount</td><td>$billing->other_service_id</td><td>$billing->other_service_price</td><td>$billing->cleaning_charges</td><td>$billing->service_charges</td><td>$billing->total_amount</td><td>$billing->payment_method_id</td><td>$billing->payment_date</td><td>$billing->created_at</td> $action_buttons</tr>";
+		}
+		$html.="</table> </div>";
+		$html.= pagination($page,$total_pages);
+		return $html;
+	}
+
+
+	
 }
 ?>

@@ -25,7 +25,8 @@ public function save($data,$file){
 		$errors["request_description"]="Invalid request_description";
 	}
 
-*/
+*/	
+		global $now;
 		if(count($errors)==0){
 			$roomservicerequest=new RoomServiceRequest();
 		$roomservicerequest->user_id=$data["user_id"];
@@ -62,7 +63,8 @@ public function update($data,$file){
 		$errors["request_description"]="Invalid request_description";
 	}
 
-*/
+*/	
+		global $now;
 		if(count($errors)==0){
 			$roomservicerequest=new RoomServiceRequest();
 			$roomservicerequest->id=$data["id"];

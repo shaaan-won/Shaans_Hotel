@@ -22,7 +22,7 @@ public function save($data,$file){
 		$errors["rating"]="Invalid rating";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$customerfeedback=new CustomerFeedback();
 		$customerfeedback->user_id=$data["user_id"];
@@ -54,7 +54,7 @@ public function update($data,$file){
 		$errors["rating"]="Invalid rating";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$customerfeedback=new CustomerFeedback();
 			$customerfeedback->id=$data["id"];

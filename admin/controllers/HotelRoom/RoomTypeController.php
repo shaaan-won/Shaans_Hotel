@@ -28,7 +28,7 @@ public function save($data,$file){
 		$errors["photo"]="Invalid photo";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$roomtype=new RoomType();
 		$roomtype->name=$data["name"];
@@ -69,7 +69,7 @@ public function update($data,$file){
 		$errors["photo"]="Invalid photo";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$roomtype=new RoomType();
 			$roomtype->id=$data["id"];

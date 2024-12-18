@@ -25,7 +25,7 @@ public function save($data,$file){
 		$errors["end_time"]="Invalid end_time";
 	}
 
-*/
+*/			global $now;
 		if(count($errors)==0){
 			$workschedule=new WorkSchedule();
 		$workschedule->staff_id=$data["staff_id"];
@@ -61,7 +61,7 @@ public function update($data,$file){
 		$errors["end_time"]="Invalid end_time";
 	}
 
-*/
+*/			global $now;
 		if(count($errors)==0){
 			$workschedule=new WorkSchedule();
 			$workschedule->id=$data["id"];

@@ -31,7 +31,7 @@ public function save($data,$file){
 		$errors["payment_status"]="Invalid payment_status";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$payment=new Payment();
 		$payment->reservation_id=$data["reservation_id"];
@@ -76,7 +76,7 @@ public function update($data,$file){
 		$errors["payment_status"]="Invalid payment_status";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$payment=new Payment();
 			$payment->id=$data["id"];

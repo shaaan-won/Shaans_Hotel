@@ -37,7 +37,8 @@ public function save($data,$file){
 		$errors["performance_score"]="Invalid performance_score";
 	}
 
-*/
+*/		
+		global $now;
 		if(count($errors)==0){
 			$staff=new Staff();
 		$staff->name=$data["name"];
@@ -90,7 +91,8 @@ public function update($data,$file){
 		$errors["performance_score"]="Invalid performance_score";
 	}
 
-*/
+*/		
+		global $now;
 		if(count($errors)==0){
 			$staff=new Staff();
 			$staff->id=$data["id"];

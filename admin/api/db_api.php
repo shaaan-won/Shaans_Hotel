@@ -17,6 +17,8 @@
     }
    }
 
+// probot api
 
+//probot create-api -m Staff -px ht_ -t staffs -u root -p " " -d shaans_hotel
 
 ?>

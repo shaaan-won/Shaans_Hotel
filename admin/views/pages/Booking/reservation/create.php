@@ -15,7 +15,10 @@ echo Form::open(["route"=>"reservation/save"]);
 	echo Form::input(["label"=>"Tax","type"=>"text","name"=>"tax"]);
 	echo Form::input(["label"=>"Total Amount","type"=>"text","name"=>"total_amount"]);
 	echo Form::input(["label"=>"Remaining Amount","type"=>"text","name"=>"remaining_amount"]);
-	echo Form::input(["label"=>"Payment Status","type"=>"text","name"=>"payment_status"]);
+	echo Form::input(["label"=>"Service","name"=>"other_service_id","table"=>"other_services"]);
+	echo Form::input(["label"=>"Service Charges","name"=>"other_service_price","type"=>"text"]);
+	echo Form::input(["label"=>"Payment Status","table"=>"status","name"=>"payment_status"]);
+	echo Form::input(["label"=>"Payment Status","table"=>"payment_methods","name"=>"payment_method_id"]);
 
 echo Form::input(["name"=>"create","class"=>"btn btn-primary offset-2", "value"=>"Save", "type"=>"submit"]);
 echo Form::close();

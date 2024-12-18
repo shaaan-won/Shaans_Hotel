@@ -144,6 +144,7 @@ class Reservation extends Model implements JsonSerializable{
 			$action_buttons = "";
 			if($action){
 				$action_buttons = "<td><div class='btn-group' style='display:flex;'>";
+				$action_buttons.= Event::button(["name"=>"Bill", "value"=>"Bill", "class"=>"btn btn-secondary", "route"=>"reservation/bill/$reservation->id"]);
 				$action_buttons.= Event::button(["name"=>"show", "value"=>"Show", "class"=>"btn btn-info", "route"=>"reservation/show/$reservation->id"]);
 				$action_buttons.= Event::button(["name"=>"edit", "value"=>"Edit", "class"=>"btn btn-primary", "route"=>"reservation/edit/$reservation->id"]);
 				$action_buttons.= Event::button(["name"=>"delete", "value"=>"Delete", "class"=>"btn btn-danger", "route"=>"reservation/confirm/$reservation->id"]);

@@ -11,7 +11,7 @@ class BillingController extends Controller{
 public function save($data,$file){
 	if(isset($data["create"])){
 	$errors=[];
-/*
+/*	
 	if(!preg_match("/^[\s\S]+$/",$data["reservation_id"])){
 		$errors["reservation_id"]="Invalid reservation_id";
 	}
@@ -52,7 +52,8 @@ public function save($data,$file){
 		$errors["payment_method_id"]="Invalid payment_method_id";
 	}
 
-*/
+*/	
+		global $now;
 		if(count($errors)==0){
 			$billing=new Billing();
 		$billing->reservation_id=$data["reservation_id"];
@@ -127,7 +128,8 @@ public function update($data,$file){
 		$errors["payment_method_id"]="Invalid payment_method_id";
 	}
 
-*/
+*/		
+		global $now;
 		if(count($errors)==0){
 			$billing=new Billing();
 			$billing->id=$data["id"];

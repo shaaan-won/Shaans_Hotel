@@ -40,7 +40,7 @@ public function save($data,$file){
 		$errors["address"]="Invalid address";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$customer=new Customer();
 		$customer->name=$data["name"];
@@ -97,7 +97,7 @@ public function update($data,$file){
 		$errors["address"]="Invalid address";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$customer=new Customer();
 			$customer->id=$data["id"];

@@ -19,7 +19,7 @@ public function save($data,$file){
 		$errors["comments"]="Invalid comments";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$checkincheckout=new CheckInCheckOut();
 		$checkincheckout->reservation_id=$data["reservation_id"];
@@ -49,7 +49,7 @@ public function update($data,$file){
 		$errors["comments"]="Invalid comments";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$checkincheckout=new CheckInCheckOut();
 			$checkincheckout->id=$data["id"];

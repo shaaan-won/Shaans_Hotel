@@ -16,7 +16,7 @@ public function save($data,$file){
 		$errors["name"]="Invalid name";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$idcardtype=new IdCardType();
 		$idcardtype->name=$data["name"];
@@ -40,7 +40,7 @@ public function update($data,$file){
 		$errors["name"]="Invalid name";
 	}
 
-*/
+*/		global $now;
 		if(count($errors)==0){
 			$idcardtype=new IdCardType();
 			$idcardtype->id=$data["id"];

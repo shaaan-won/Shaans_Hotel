@@ -72,9 +72,10 @@ if (isset($_POST["btnSignIn"])) {
 
   <!-- Theme Config js (Require in all Page) -->
   <script src="assets/js/config.min.js"></script>
-
   <!-- Invoice (Require in all Page) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </head>
 
@@ -105,7 +106,7 @@ if (isset($_POST["btnSignIn"])) {
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="authentication-form">
                   <div class="mb-3">
                     <label class="form-label" for="example-email">Username</label>
-                    <input type="text"  id="example-email" name="txtUsername" class="form-control" placeholder="Enter your email">
+                    <input type="text" id="example-email" name="txtUsername" class="form-control" placeholder="Enter your email">
                   </div>
                   <div class="mb-3">
                     <a href="auth-password.html" class="float-end text-muted text-unline-dashed ms-1">Reset password</a>
@@ -143,10 +144,10 @@ if (isset($_POST["btnSignIn"])) {
   </div>
 
   <!-- Vendor Javascript (Require in all Page) -->
-  <script src="<?=$base_url; ?>assets/js/vendor.js"></script>
+  <script src="<?= $base_url; ?>assets/js/vendor.js"></script>
 
   <!-- App Javascript (Require in all Page) -->
-  <script src="<?=$base_url; ?>assets/js/app.js"></script>
+  <script src="<?= $base_url; ?>assets/js/app.js"></script>
 
 
 

@@ -36,7 +36,7 @@ $days = $interval->days;
 
 	.container {
 		background-color: #fff;
-		max-width: 90%;
+		max-width: 900px;
 		padding: 30px;
 		border-radius: 8px;
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -320,7 +320,9 @@ $days = $interval->days;
 
 	<!-- Final Total Section -->
 	<div class="text-center">
-		<h3>Total Due: <span id="final-total">$675.00</span></h3>
+		<h4>Total Due: <span id="final-total"><?php echo Payment::find($billing->reservation_id)->amount_due ?></span></h4>
+		<h4>Amount Paid: <span id="amount-paid"><?php echo Payment::find($billing->reservation_id)->amount_received ?></span></h4>
+		<h3 >Status: <span id="status" class="text-success" ><?php echo Payment::find($billing->reservation_id)->payment_status ?></span></h3>
 		<button class="btn btn-primary" id="edit-invoice">Edit Invoice</button>
 		<button class="btn btn-success" id="generate-invoice">
 			Generate Invoice
